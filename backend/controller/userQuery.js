@@ -41,6 +41,7 @@ Return only JSON like:
                 .map(m => m.replace(/[\[\]",]/g, "").trim())
                 .filter(Boolean);
         }
+        
         try {
             const results = await Promise.all(
                 movies.map(movie =>
