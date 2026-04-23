@@ -44,7 +44,7 @@ Return only JSON like:
         try {
             const results = await Promise.all(
                 movies.map(movie =>
-                    fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&t=${encodeURIComponent(movie)}&plot=full`)
+                    fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&t=${encodeURIComponent(movie)}&plot=full`)
                         .then(res => res.json())
                 )
             );
