@@ -22,7 +22,7 @@ function About() {
           className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{ backgroundImage: `url(${bg})` }}
         />
-        <div className="relative z-10 text-white pt-[20vh] w-[90%] min-h-screen flex flex-col justify-start items-start m-auto border">
+        <div className="relative z-10 text-white pt-[20vh] w-[90%] min-h-screen flex flex-col justify-start items-start m-auto">
           <Particles />
           <div className='text-center w-full'>
             <h1 className='text-2xl font-heading'>People often waste time deciding what to watch and struggle to find content matching their mood.</h1>
