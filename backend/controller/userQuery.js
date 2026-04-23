@@ -69,5 +69,4 @@ Return only JSON like:
         res.status(500).json({ error: "Something went wrong" });
     }
 };
-
 export default userQuery;
