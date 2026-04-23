@@ -17,7 +17,7 @@ function Recommend() {
     }
     try {
       setAiMessage("🤖 Thinking...");
-      const res = await fetch("http://localhost:5000/api/userQuery", {
+      const res = await fetch("https://watchwise-ta6m.onrender.com/api/userQuery", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
