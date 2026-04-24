@@ -12,7 +12,8 @@ const userQuery = async (req, res) => {
     try {
         const { description, language, industry } = req.body;
 
-        const prompt = `Suggest 3 movies based on:
+        const prompt = `Give exactly 5 movie recommendations.
+        Suggest 5 movies based on:
 Mood: ${description}
 Language: ${language}
 Industry: ${industry}
@@ -52,7 +53,9 @@ Return only JSON like:
             let allMovies = [];
             results.forEach(data => {
                 if (data.Response === "True") {
+                    if(allMovies.length >= 3){
                     allMovies.push(data);
+                    }
                 }
             });
             console.log("AI Movie details:", allMovies);
