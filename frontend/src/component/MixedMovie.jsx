@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
+import dotenv from 'dotenv'
+const API_KEY = process.env.VITE_OMDB_API_KEY;
 function MixedMovies() {
   const [movies, setMovies] = useState([]);
   const queries = ["avengers", "war", "indian spy", "india"];
