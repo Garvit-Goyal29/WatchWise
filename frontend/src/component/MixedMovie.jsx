@@ -8,7 +8,7 @@ function MixedMovies() {
       try {
         const results = await Promise.all(
           queries.map(q =>
-            fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${q}`)
+            fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${q}`)
               .then(res => res.json())
           )
         );
