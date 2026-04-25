@@ -17,7 +17,8 @@ function Recommend() {
     }
     try {
       setAiMessage("🤖 Thinking...");
-      const res = await fetch("https://watchwise-ta6m.onrender.com/api/userQuery", {
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || "https://watchwise-ta6m.onrender.com";
+      const res = await fetch(`${backendUrl}/api/userQuery`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -29,12 +30,18 @@ function Recommend() {
         })
       })
       const data = await res.json();
-      console.log(data);
-      setMovies(data.movies || []);
-      setAiMessage("Answered")
+      console.log("Response data:", data);
+      
+      if (data.movies && data.movies.length > 0) {
+        setMovies(data.movies);
+        setAiMessage("Here are your recommendations! 🎬");
+      } else {
+        setMovies([]);
+        setAiMessage("Sorry, I couldn't find any matching movies. 😕");
+      }
     } catch (err) {
-      console.log(err)
-      setAiMessage("Answered")
+      console.error("Fetch error:", err);
+      setAiMessage("Error connecting to server. ❌");
     }
   }
   useEffect(() => {
@@ -191,7 +198,7 @@ function Recommend() {
                       <img
                         src={movie.Poster !== "N/A" ? movie.Poster : ""}
                         alt={movie.Title}
-                        className="w-full h-full object-contain"
+                        className="w-full h-full object-cover"
                       />
                       {movie.Title !== "N/A" && (
                         <div className="absolute top-0 right-0 h-full w-full opacity-0 hover:opacity-100 transition-all duration-200 bg-black/90 border-white text-white font-heading px-1 rounded flex flex-col justify-center gap-4">
