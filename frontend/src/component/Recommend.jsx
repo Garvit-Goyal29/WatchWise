@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
+import { useLocation } from "react-router-dom";
 import bg from '../assets/bg.jpeg'
 import r1 from '../assets/roboF1.png'
 import Particles from './Particles.jsx'
@@ -9,6 +10,14 @@ function Recommend() {
   const [industry, setindustry] = useState("");
   const [index, setIndex] = useState(0);
   const [movies, setMovies] = useState([]);
+  const { state } = useLocation();
+  useEffect(() => {
+    if (state) {
+      setDescription(state.description);
+      setlanguage(state.language);
+      setindustry(state.industry);
+    }
+  }, [state]);
   const handleUserInput = async (e) => {
     e.preventDefault()
     if (!description || !language || !industry) {
@@ -31,7 +40,7 @@ function Recommend() {
       })
       const data = await res.json();
       console.log("Response data:", data);
-      
+
       if (data.movies && data.movies.length > 0) {
         setMovies(data.movies);
         setAiMessage("Here are your recommendations! 🎬");

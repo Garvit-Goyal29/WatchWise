@@ -1,5 +1,5 @@
 import bg from '../assets/bg.jpeg';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
 import MixedMovies from './MixedMovie';
 import Particles from './Particles.jsx'
@@ -18,6 +18,53 @@ function Home() {
     "https://image.tmdb.org/t/p/w500/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg"  // Titanic
     // "https://m.media-amazon.com/images/M/MV5BMjYyOTdmYT…WJlZjYtZmJkNDI5MmNlNjMyXkEyXkFqcGc@._V1_SX300.jpg", //chak de india
   ];
+  const navigate = useNavigate()
+  function romanceFunc() {
+    navigate('/recommend', {
+      state: {
+        description: "Romance",
+        language: "Hindi",
+        industry: "Bollywood"
+      }
+    })
+  }
+  function comedyFunc() {
+    navigate('/recommend', {
+      state: {
+        description: "Comedy",
+        language: "Hindi",
+        industry: "Bollywood"
+      }
+    })
+  }
+  function ThrillerFunc() {
+    navigate('/recommend', {
+      state: {
+        description: "Thriller",
+        language: "Hindi",
+        industry: "Bollywood"
+      }
+    })
+  }
+  function SciFiFunc() {
+    navigate('/recommend', {
+      state: {
+        description: "Sci-Fi",
+        language: "English",
+        industry: "Hollywood"
+      }
+    })
+  }
+  function ActionFunc() {
+    navigate('/recommend', {
+      state: {
+        description: "Action",
+        language: "English",
+        industry: "Hollywood"
+      }
+    })
+  }
+
   return (
     <div className='relative min-h-screen'>
       <motion.div
@@ -74,6 +121,7 @@ function Home() {
                   duration: 1,
                   delay: 1
                 }}
+                onClick={romanceFunc}
                 className="px-4 py-2 text-xs bg-pink-500/30 hover:bg-pink-500/80 cursor-pointer border border-white/20 rounded-full backdrop-blur-md text-white">
                 Romance
               </motion.span>
@@ -86,6 +134,7 @@ function Home() {
                   duration: 1,
                   delay: 1
                 }}
+                onClick={comedyFunc}
                 className="px-4 py-2 text-xs bg-yellow-500/30 hover:bg-yellow-500/80 cursor-pointer border border-white/20 rounded-full backdrop-blur-md text-white">
                 Comedy
               </motion.span>
@@ -98,6 +147,7 @@ function Home() {
                   duration: 1,
                   delay: 1
                 }}
+                onClick={ThrillerFunc}
                 className="px-4 py-2 text-xs bg-purple-500/30 hover:bg-purple-500/80 cursor-pointer border border-white/20 rounded-full backdrop-blur-md text-white">
                 Thriller
               </motion.span>
@@ -110,6 +160,7 @@ function Home() {
                   duration: 1,
                   delay: 1
                 }}
+                onClick={ActionFunc}
                 className="px-4 py-2 text-xs bg-red-500/30 hover:bg-red-500/80 cursor-pointer border border-white/20 rounded-full backdrop-blur-md text-white">
                 Action
               </motion.span>
@@ -121,7 +172,7 @@ function Home() {
                 transition={{
                   duration: 1,
                   delay: 1
-                }}
+                }}onClick={SciFiFunc}
                 className="px-4 py-2 text-xs bg-blue-500/30 hover:bg-blue-500/80 cursor-pointer border border-white/20 rounded-full backdrop-blur-md text-white">
                 Sci-Fi
               </motion.span>
@@ -332,7 +383,7 @@ function Home() {
           <p>Powered by <a href="">OMDB</a> API & This product uses the <a href="">OMDB</a> API but is not endorsed or certified by <a href="">OMDB</a></p>
         </div>
       </footer>
-      </div>
+    </div>
   );
 }
 
