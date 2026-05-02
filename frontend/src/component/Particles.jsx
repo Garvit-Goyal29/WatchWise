@@ -8,7 +8,6 @@ function Particles() {
       duration: 2 + Math.random() * 3,
     }));
   }, []);
-
   return (
     <div className="absolute inset-0 -z-10">
       {particles.map((p, i) => (
