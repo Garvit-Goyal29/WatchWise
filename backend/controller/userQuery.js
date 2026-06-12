@@ -7,6 +7,7 @@ const client = new OpenAI({
 });
 
 const userQuery = async (req, res) => {
+    const { description, language, industry } = req.body;
     const API_KEY = process.env.OMDB_API_KEY;
     const GROQ_KEY = process.env.GROQ_API_KEY;
 
@@ -16,14 +17,20 @@ const userQuery = async (req, res) => {
     }
 
     try {
-        const { description, language, industry } = req.body;
-        console.log("Request received:", { description, language, industry });
-
-        const prompt = `Return ONLY a JSON array of 5 movie titles based on:
-Mood: ${description}
-Language: ${language}
-Industry: ${industry}
-Format: ["Movie 1", "Movie 2", "Movie 3", "Movie 4", "Movie 5"]`;
+        const prompt = `You are an expert movie recommendation engine.
+        User Request: ${description}
+        Preferred Language: ${language}
+        Preferred Industry: ${industry}
+        Rules:
+        1. Recommend ONLY movies from the specified language and industry.
+        2. Understand the user's actual intent, not just the genre.
+        3. If the user says "make me cry", recommend heartbreaking emotional movies.
+        4. If the user says "funny", recommend comedy movies.
+        5. If the user says "romantic", recommend romance movies.
+        6. Never recommend movies from a different language or industry.
+        7. Return exactly 5 movie titles.
+        Return ONLY a JSON array.
+        Example:["Movie 1","Movie 2","Movie 3","Movie 4","Movie 5"]`;
 
         const response = await client.chat.completions.create({
             model: "llama-3.1-8b-instant",
