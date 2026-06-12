@@ -198,7 +198,7 @@ function Recommend() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: i * 0.2 }}
-                    className="flex flex-col w-auto h-full bg-black/40 border rounded-2xl overflow-hidden shadow-lg"
+                    className="flex flex-col w-[20%] h-full bg-black/40 border rounded-2xl overflow-hidden shadow-lg"
                   >
                     <div className="relative h-72">
                       <img

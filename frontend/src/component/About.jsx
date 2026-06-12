@@ -20,12 +20,12 @@ function About() {
         <div className="relative z-10 text-white pt-[20vh] w-[90%] min-h-screen flex flex-col justify-start items-start m-auto">
           <Particles />
           <div className='text-center w-full'>
-            <h1 className='text-2xl font-heading'>People often waste time deciding what to watch and struggle to find content matching their mood.</h1>
-            <h1 className='font-para'><span className='text-[#FED500] font-heading font-semibold'>WatchWise</span> uses AI to analyze user mood and preferences to suggest personalized movie recommendations instantly.</h1>
+            <h1 className='text-2xl font-heading'>Stop Wasting Time Choosing Movies</h1>
+            <h1 className='font-para'><span className='text-[#FED500] font-heading font-semibold'>WatchWise</span> AI finds the right movie for your mood.</h1>
           </div>
-          <div className='w-full h-full flex flex-col justify-center items-center mt-[10vh] pb-[15vh]'>
+          <div className='w-full h-full flex flex-col justify-center items-center mt-[10vh]'>
             <div className='flex flex-col justify-center items-center mb-[2vh]'>
-              <h1 className='text-center text-5xl font-heading text-[#fed500]'>How It Work</h1>
+              <h1 className='text-center text-5xl font-heading text-white'>How It Work</h1>
               <span className='text-xs font-para text-[#fed500]'>scroll to see step</span>
             </div>
             <div className='w-[60vw] h-[80vh] flex justify-around items-center'>
