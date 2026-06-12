@@ -3,7 +3,8 @@ import Home from './component/Home.jsx';
 import Navbar from './component/Navbar.jsx';
 import About from "./component/About.jsx";
 import Recommend from "./component/Recommend.jsx";
-
+import Signup from './component/Signup.jsx'
+import Login from './component/Login.jsx'
 function App() {
   return (
     <div className="bg-black min-h-screen">
@@ -12,6 +13,8 @@ function App() {
         <Route path="/" element={<Home key="home" />} />
         <Route path="/about" element={<About />} />
         <Route path="/recommend" element={<Recommend />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   );

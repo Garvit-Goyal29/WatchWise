@@ -1,4 +1,4 @@
-import bg from '../assets/bg.jpeg';
+import bg from '../assets/bg.jpg';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
 import MixedMovies from './MixedMovie';
@@ -67,18 +67,13 @@ function Home() {
 
   return (
     <div className='relative min-h-screen'>
-      <motion.div
-        animate={{ opacity: [1, 1, 0.8, 0.6, 1, 1] }}
-        transition={{ duration: 6, repeat: Infinity }}
-        className="absolute inset-0 bg-cover bg-center bg-fixed"
-        style={{ backgroundImage: `url(${bg})` }}
-      />
-      <div className="relative z-10 text-white pt-[20vh] w-[90%] min-h-screen flex flex-col justify-center items-start m-auto">
+      <div className="absolute inset-0 bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${bg})` }} />
+      <div className="relative z-10 text-white pt-[20vh] w-[93%] min-h-screen flex flex-col justify-center items-start m-auto">
         <Particles />
         {/* Hero Section */}
-        <div className='flex w-full h-full justify-center items-center gap-[1vh] overflow-hidden'>
+        <div className='flex w-full h-full justify-start items-center overflow-hidden'>
           {/* Hero Section left-side */}
-          <div className='w-[70%] h-full flex flex-col justify-center gap-[5vh] items-center py-[3vh]'>
+          <div className='w-[70%] h-full flex flex-col justify-center gap-[5vh] items-center py-[3vh] pr-[25%]'>
             {/* Heading */}
             <div>
               <motion.h1
@@ -92,7 +87,7 @@ function Home() {
                   duration: 2,
                   delay: 0.5
                 }}
-                className="font-heading text-4xl lg:text-5xl">
+                className="font-heading text-4xl lg:text-5xl text-center">
                 Watch What You Feel!
               </motion.h1>
               <motion.p
@@ -172,7 +167,7 @@ function Home() {
                 transition={{
                   duration: 1,
                   delay: 1
-                }}onClick={SciFiFunc}
+                }} onClick={SciFiFunc}
                 className="px-4 py-2 text-xs bg-blue-500/30 hover:bg-blue-500/80 cursor-pointer border border-white/20 rounded-full backdrop-blur-md text-white">
                 Sci-Fi
               </motion.span>
@@ -189,28 +184,18 @@ function Home() {
                 delay: 1.8,
                 duration: 1
               }}
-              className='flex flex-col border rounded-2xl justify-evenly items-center w-[40%] h-[28vh] bg-white/10'>
+              className='flex flex-col border border-white/30 rounded-2xl justify-evenly items-center w-[30%] h-[25vh] bg-black/30 backdrop-blur-sm px-36'>
               <div className='text-center'>
                 <h1 className='font-heading text-xl'>Get Recommendation </h1>
                 <p className='font-para text-[1.7vh]'>✨ AI picks movies for your mood.</p>
               </div>
               <NavLink to='/recommend'
-                className="px-6 py-3 rounded-full text-white text-sm border bg-linear-to-r from-purple-700/30 to-red-400/30 hover:from-purple-700 hover:to-red-400 font-button transition-all ease-in duration-300"
+                className="w-[15vw] text-center py-[1vh] rounded-full text-white text-sm border bg-linear-to-r from-purple-700/30 to-red-400/30 hover:from-purple-700 hover:to-red-400 font-button transition-all ease-in duration-300"
               >Try AI Suggestion
               </NavLink>
             </motion.div>
             {/* Proof element */}
-            <div className='w-full h-full flex gap-[1vh]'>
-              <motion.p
-                animate={{
-                  opacity: [0, 1, 1, 1],
-                  y: [-10, 0, 0, 0]
-                }}
-                transition={{
-                  delay: 2,
-                  duration: 1
-                }}
-                className="px-3 py-1 text-sm w-[13vw] bg-white/10 border border-white/20 rounded-full backdrop-blur-md text-white">🎥 10,000+ Movies</motion.p>
+            <div className='w-[90%] h-full flex gap-[5vh] justify-center'>
               <motion.p
                 animate={{
                   opacity: [0, 0, 1, 1],
@@ -220,7 +205,7 @@ function Home() {
                   delay: 2,
                   duration: 1
                 }}
-                className="px-3 py-1 text-sm bg-white/10 border border-white/20 rounded-full backdrop-blur-md text-white">🤖 AI Powered Suggestions</motion.p>
+                className="py-[2vh] text-sm w-[40%] bg-black/40 border border-white/20 rounded-full backdrop-blur-xs text-white text-center">🤖  Intelligence</motion.p>
               <motion.p
                 animate={{
                   opacity: [0, 0, 0, 1],
@@ -230,15 +215,15 @@ function Home() {
                   delay: 2,
                   duration: 1
                 }}
-                className="px-3 py-1 text-sm bg-white/10 border border-white/20 rounded-full backdrop-blur-md text-white">🌍 Multi-language Support in counting animation</motion.p>
+                className="py-[2vh] text-sm w-[40%] bg-black/40 border border-white/20 rounded-full backdrop-blur-xs text-white text-center">🌍 Languages</motion.p>
             </div>
           </div>
           {/* Hero Section right-side */}
           <motion.div // ref={refRside}
             initial={{
               opacity: 0,
-              scale: 0.5,
-              y: 200
+              scale: 0.8,
+              y: 150
             }}
             animate={{
               opacity: 1,
@@ -249,8 +234,7 @@ function Home() {
               duration: 0.1,
               delay: 3
             }}
-            // className={`rs ${VisibleRside?"showRS":""} w-[30%] h-[78vh] overflow-hidden relative border border-white/50 rounded-2xl`}
-            className={`rs w-[30%] h-[78vh] overflow-hidden relative border border-white/50 rounded-2xl`}
+            className={`rs w-[28%] h-[78vh] overflow-hidden relative border border-white/50 rounded-2xl`}
           >
             <motion.div
               animate={{
@@ -350,23 +334,18 @@ function Home() {
       </div>
       <footer className="w-full border-t border-white/30 bg-black/40 backdrop-blur-xl text-white px-10 py-2">
         <div className="flex flex-col md:flex-row justify-between">
-          {/* logo */}
           <div className='w-1/3 flex flex-col items-center'>
             <h2 className="text-xl font-heading">WatchWise</h2>
             <p className="text-gray-400 text-sm mt-2 font-para">
               Watch what you feel.
             </p>
           </div>
-
-          {/* Links */}
           <div className="w-1/3 flex flex-col gap-2 text-sm font-para items-center">
             <p className="font-semibold text-xl">Quick Links</p>
             <a href="/" className="hover:text-blue-500">Home</a>
             <a href="/recommend" className="hover:text-blue-500">Recommend</a>
             <a href="/about" className="hover:text-blue-500">About</a>
           </div>
-
-          {/* Social */}
           <div className="w-1/3 flex flex-col gap-2 text-sm font-para items-center">
             <p className="font-semibold text-xl">Connect</p>
             <div className="flex flex-col gap-2 text-xl">

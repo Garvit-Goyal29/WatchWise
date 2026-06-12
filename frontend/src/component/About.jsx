@@ -1,4 +1,4 @@
-import bg from '../assets/bg.jpeg'
+import bg from '../assets/bg.jpg'
 import Particles from './Particles.jsx'
 import { motion, useScroll, useTransform } from 'framer-motion';
 function About() {
@@ -14,14 +14,9 @@ function About() {
   return (
     <>
       <div className='relative min-h-screen'>
-        <motion.div
-          animate={{
-            opacity: [1, 1, 0.8, 0.6, 1, 1]
-          }}
-          transition={{ duration: 6, repeat: Infinity }}
+        <div
           className="absolute inset-0 bg-cover bg-center bg-fixed"
-          style={{ backgroundImage: `url(${bg})` }}
-        />
+          style={{ backgroundImage: `url(${bg})` }} />
         <div className="relative z-10 text-white pt-[20vh] w-[90%] min-h-screen flex flex-col justify-start items-start m-auto">
           <Particles />
           <div className='text-center w-full'>
@@ -50,7 +45,7 @@ function About() {
                     opacity: divFill3,
                     y: y3
                   }}
-                  className='h-[10vh] w-[24.5vw] border rounded-2xl text-sm flex justify-center items-center font-para bg-black/30 backdrop-blur-2xl text-white'>AI generates movie suggestions </motion.div>
+                  className='h-[10vh] w-[24.5vw] border rounded-2xl text-sm flex justify-center items-center font-para bg-black/30 backdrop-blur-2xl text-white'>System fetches movie details (OMDB API)</motion.div>
                 <div className='h-[10vh] w-[24.5vw] '></div>
                 <div className='h-[10vh] w-[24.5vw] '></div>
               </div>
@@ -68,7 +63,7 @@ function About() {
                     opacity: divFill2,
                     y: y2
                   }}
-                  className='h-[10vh] w-[24.5vw] border rounded-2xl text-sm flex justify-center items-center font-para bg-black/30 backdrop-blur-2xl'>System fetches movie details (OMDB API)</motion.div>
+                  className='h-[10vh] w-[24.5vw] border rounded-2xl text-sm flex justify-center items-center font-para bg-black/30 backdrop-blur-2xl'>AI generates movie suggestions</motion.div>
                 <div className='h-[10vh] w-[24.5vw] '></div>
                 <div className='h-[10vh] w-[24.5vw] '></div>
                 <div className='h-[10vh] w-[24.5vw] '></div>
@@ -81,19 +76,19 @@ function About() {
               </div>
             </div>
           </div>
-          <div className="w-[90vw] mx-auto mt-10 flex justify-evenly items-center pb-[5vh]">
-            <div className="bg-black/40 border border-white/20 rounded-2xl p-6 backdrop-blur-md shadow-lg h-[40vh] w-[30vw] flex justify-start items-start flex-col">
-              <h2 className="text-xl font-heading text-purple-300 mb-4">
-                ⚙️ Tech Stack
+          {/* footer */}
+          <div className="w-[90vw] mt-10 flex justify-evenly items-center pb-[5vh] px-[14vw] gap-[30vh]">
+            <div className="bg-black/40 border border-white/20 rounded-2xl p-6 backdrop-blur-md shadow-lg h-[40vh] w-full flex justify-center items-start flex-col transsition duration-150 hover:-translate-y-5">
+              <h2 className="text-xl font-heading text-purple-300 mb-4">⚙️ Tech Stack
               </h2>
               <ul className="text-sm text-gray-300 space-y-2 font-para">
                 <li><span className="text-white font-semibold">Frontend:</span> React.js, Tailwind CSS</li>
                 <li><span className="text-white font-semibold">Backend:</span> Node.js, Express</li>
-                <li><span className="text-white font-semibold">APIs:</span> Groq / Gemini, OMDB</li>
+                <li><span className="text-white font-semibold">APIs:</span> Groq, OMDB</li>
                 <li><span className="text-white font-semibold">Tools:</span> Framer Motion</li>
               </ul>
             </div>
-            <div className="bg-black/40 border border-white/20 rounded-2xl p-6 backdrop-blur-md shadow-lg  h-[40vh] w-[30vw] flex justify-start items-start flex-col">
+            <div className="bg-black/40 border border-white/20 rounded-2xl p-6 backdrop-blur-md shadow-lg  h-[40vh] w-full flex justify-center items-start flex-col transsition duration-150 hover:-translate-y-5">
               <h2 className="text-xl font-heading text-yellow-300 mb-4">
                 🚀 Future Improvements
               </h2>
