@@ -14,7 +14,7 @@ function Navbar() {
           opacity: 1
         }}
         transition={{
-          duration: 1,
+          duration: 2,
           ease: 'anticipate'
         }}
         className="fixed top-0 left-0 w-[90%] z-50 mx-[5%] my-6 backdrop-blur-md bg-black/20 border-[0.2vh] border-white/20 rounded-full shadow-lg shadow-black/30">

@@ -78,28 +78,32 @@ function Home() {
             <div>
               <motion.h1
                 initial={{
-                  opacity: "0"
+                  opacity: "0",
+                  y:-10
                 }}
                 animate={{
-                  opacity: "100%"
+                  opacity: "100%",
+                  y:0
                 }}
                 transition={{
-                  duration: 2,
-                  delay: 0.5
+                  duration: 1.5,
+                  delay:1
                 }}
                 className="font-heading text-4xl lg:text-5xl text-center">
                 Watch What You Feel!
               </motion.h1>
               <motion.p
                 initial={{
-                  opacity: "0"
+                  opacity: "0",
+                  y:-10
                 }}
                 animate={{
-                  opacity: "100%"
+                  opacity: "100%",
+                  y:0
                 }}
                 transition={{
-                  duration: 2,
-                  delay: 0.5
+                  duration: 1.5,
+                  delay:1
                 }}
                 className="font-para text-[2vh] text-gray-400 max-w-xl text-center">
                 Let AI recommend the perfect movie for you Or Browse trending.
