@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom"
 import { motion } from 'framer-motion'
-import logo from '../assets/LogoWW.png'
+import logo from '../assets/LogoWW.webp'
 function Navbar() {
   return (
     <>

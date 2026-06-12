@@ -1,4 +1,4 @@
-import bg from '../assets/bg.jpg'
+import bg from '../assets/bg.webp'
 import Particles from './Particles.jsx'
 import { motion, useScroll, useTransform } from 'framer-motion';
 function About() {

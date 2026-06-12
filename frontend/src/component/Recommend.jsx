@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLocation } from "react-router-dom";
-import bg from '../assets/bg.jpg'
-import r1 from '../assets/roboF1.png'
+import bg from '../assets/bg.webp'
+import r1 from '../assets/roboF1.webp'
 import Particles from './Particles.jsx'
 import { useState, useEffect } from "react";
 function Recommend() {

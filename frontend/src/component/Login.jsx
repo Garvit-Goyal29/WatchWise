@@ -1,5 +1,5 @@
 import React from 'react'
-import bg from '../assets/bg.jpg'
+import bg from '../assets/bg.webp'
 import {motion} from 'framer-motion'
 function Login(){
   return (

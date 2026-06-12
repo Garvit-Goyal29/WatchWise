@@ -1,4 +1,4 @@
-import bg from '../assets/bg.jpg';
+import bg from '../assets/bg.webp';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
 import MixedMovies from './MixedMovie';
