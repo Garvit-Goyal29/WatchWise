@@ -1,14 +1,40 @@
 import bg from '../assets/bg.webp';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
 import MixedMovies from './MixedMovie';
 import Particles from './Particles.jsx'
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { useState, useEffect } from 'react';
 import './Home.css'
+
+// Module-level flag: resets on page refresh, persists across SPA navigations
+let hasPlayedIntro = false;
+
 function Home() {
-  // const {ref:refRside, inView:VisibleRside} = useInView({
-  //   threshold:0.15
-  // })
+  const [hasAnimated, setHasAnimated] = useState(hasPlayedIntro);
+  const [scrollLocked, setScrollLocked] = useState(!hasPlayedIntro);
+
+  // Lock scroll on first load, unlock after animation ends
+  useEffect(() => {
+    if (!hasAnimated) {
+      document.body.style.overflow = 'hidden';
+      const timer = setTimeout(() => {
+        document.body.style.overflow = '';
+        setScrollLocked(false);
+        hasPlayedIntro = true;
+        setHasAnimated(true);
+      }, 4500);
+      return () => {
+        clearTimeout(timer);
+        document.body.style.overflow = '';
+      };
+    }
+  }, [hasAnimated]);
+
+  // Helper: if already animated, skip delays/durations
+  const d = (delay) => hasAnimated ? 0 : delay;
+  const dur = (duration) => hasAnimated ? 0 : duration;
+
   const movieImages = [
     "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg", // The dard
     "https://image.tmdb.org/t/p/w500/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg", // Joker
@@ -16,7 +42,6 @@ function Home() {
     "https://image.tmdb.org/t/p/w500/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg", // Avengers
     "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg", // Spider-Man
     "https://image.tmdb.org/t/p/w500/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg"  // Titanic
-    // "https://m.media-amazon.com/images/M/MV5BMjYyOTdmYT…WJlZjYtZmJkNDI5MmNlNjMyXkEyXkFqcGc@._V1_SX300.jpg", //chak de india
   ];
   const navigate = useNavigate()
   function romanceFunc() {
@@ -64,6 +89,12 @@ function Home() {
       }
     })
   }
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <div className='relative min-h-screen'>
@@ -78,32 +109,32 @@ function Home() {
             <div>
               <motion.h1
                 initial={{
-                  opacity: "0",
-                  y: -10
+                  opacity: hasAnimated ? 1 : 0,
+                  y: hasAnimated ? 0 : -10
                 }}
                 animate={{
-                  opacity: "100%",
+                  opacity: 1,
                   y: 0
                 }}
                 transition={{
-                  duration: 1.5,
-                  delay: 1
+                  duration: dur(1.5),
+                  delay: d(1)
                 }}
                 className="font-heading text-4xl lg:text-5xl text-center">
                 Watch What You Feel!
               </motion.h1>
               <motion.p
                 initial={{
-                  opacity: "0",
-                  y: -10
+                  opacity: hasAnimated ? 1 : 0,
+                  y: hasAnimated ? 0 : -10
                 }}
                 animate={{
-                  opacity: "100%",
+                  opacity: 1,
                   y: 0
                 }}
                 transition={{
-                  duration: 1.5,
-                  delay: 1
+                  duration: dur(1.5),
+                  delay: d(1)
                 }}
                 className="font-para text-[2vh] text-gray-400 max-w-xl text-center">
                 Let AI recommend the perfect movie for you Or Browse trending.
@@ -112,65 +143,65 @@ function Home() {
             {/* Tag */}
             <div className="flex gap-[1vw] flex-wrap font-para justify-center">
               <motion.span
-                animate={{
+                animate={hasAnimated ? { opacity: 1, y: 0 } : {
                   opacity: [0, 1, 1, 1, 1, 1],
                   y: [-10, 0, 0, 0, 0, 0]
                 }}
                 transition={{
-                  duration: 1,
-                  delay: 1
+                  duration: dur(1),
+                  delay: d(1)
                 }}
                 onClick={romanceFunc}
                 className="px-4 py-2 text-xs bg-pink-500/30 hover:bg-pink-500/80 cursor-pointer border border-white/20 rounded-full backdrop-blur-md text-white">
                 Romance
               </motion.span>
               <motion.span
-                animate={{
+                animate={hasAnimated ? { opacity: 1, y: 0 } : {
                   opacity: [0, 0, 1, 1, 1, 1],
                   y: [-10, -10, 0, 0, 0, 0]
                 }}
                 transition={{
-                  duration: 1,
-                  delay: 1
+                  duration: dur(1),
+                  delay: d(1)
                 }}
                 onClick={comedyFunc}
                 className="px-4 py-2 text-xs bg-yellow-500/30 hover:bg-yellow-500/80 cursor-pointer border border-white/20 rounded-full backdrop-blur-md text-white">
                 Comedy
               </motion.span>
               <motion.span
-                animate={{
+                animate={hasAnimated ? { opacity: 1, y: 0 } : {
                   opacity: [0, 0, 0, 1, 1, 1],
                   y: [-10, -10, -10, 0, 0, 0]
                 }}
                 transition={{
-                  duration: 1,
-                  delay: 1
+                  duration: dur(1),
+                  delay: d(1)
                 }}
                 onClick={ThrillerFunc}
                 className="px-4 py-2 text-xs bg-purple-500/30 hover:bg-purple-500/80 cursor-pointer border border-white/20 rounded-full backdrop-blur-md text-white">
                 Thriller
               </motion.span>
               <motion.span
-                animate={{
+                animate={hasAnimated ? { opacity: 1, y: 0 } : {
                   opacity: [0, 0, 0, 0, 1, 1],
                   y: [-10, -10, -10, 0, 0, 0]
                 }}
                 transition={{
-                  duration: 1,
-                  delay: 1
+                  duration: dur(1),
+                  delay: d(1)
                 }}
                 onClick={ActionFunc}
                 className="px-4 py-2 text-xs bg-red-500/30 hover:bg-red-500/80 cursor-pointer border border-white/20 rounded-full backdrop-blur-md text-white">
                 Action
               </motion.span>
               <motion.span
-                animate={{
+                animate={hasAnimated ? { opacity: 1, y: 0 } : {
                   opacity: [0, 0, 0, 0, 0, 1],
                   y: [-10, -10, -10, -10, 0, 0]
                 }}
                 transition={{
-                  duration: 1,
-                  delay: 1
+                  duration: dur(1),
+                  delay: d(1)
                 }} onClick={SciFiFunc}
                 className="px-4 py-2 text-xs bg-blue-500/30 hover:bg-blue-500/80 cursor-pointer border border-white/20 rounded-full backdrop-blur-md text-white">
                 Sci-Fi
@@ -179,14 +210,14 @@ function Home() {
             {/* Recommend refer box */}
             <motion.div
               initial={{
-                opacity: 0
+                opacity: hasAnimated ? 1 : 0
               }}
               animate={{
                 opacity: 1
               }}
               transition={{
-                delay: 1.8,
-                duration: 1
+                delay: d(1.8),
+                duration: dur(1)
               }}
               className='flex flex-col border border-white/30 rounded-2xl justify-evenly items-center w-[80%] lg:w-[30%] h-[25vh] bg-black/30 backdrop-blur-sm px-6 lg:px-36'>
               <div className='text-center'>
@@ -201,33 +232,33 @@ function Home() {
             {/* Proof element */}
             <div className='w-[90%] h-full flex gap-[5vh] justify-center'>
               <motion.p
-                animate={{
+                animate={hasAnimated ? { opacity: 1, y: 0 } : {
                   opacity: [0, 0, 1, 1],
                   y: [-10, -10, 0, 0]
                 }}
                 transition={{
-                  delay: 2,
-                  duration: 1
+                  delay: d(2),
+                  duration: dur(1)
                 }}
                 className="py-[2vh] text-sm w-[40%] bg-black/40 border border-white/20 rounded-full backdrop-blur-xs text-white text-center">🤖  Intelligence</motion.p>
               <motion.p
-                animate={{
+                animate={hasAnimated ? { opacity: 1, y: 0 } : {
                   opacity: [0, 0, 0, 1],
                   y: [-10, -10, -10, 0]
                 }}
                 transition={{
-                  delay: 2,
-                  duration: 1
+                  delay: d(2),
+                  duration: dur(1)
                 }}
                 className="py-[2vh] text-sm w-[40%] bg-black/40 border border-white/20 rounded-full backdrop-blur-xs text-white text-center">🌍 Languages</motion.p>
             </div>
           </div>
           {/* Hero Section right-side - hidden on mobile */}
-          <motion.div // ref={refRside}
+          <motion.div
             initial={{
-              opacity: 0,
-              scale: 0.8,
-              y: 150
+              opacity: hasAnimated ? 1 : 0,
+              scale: hasAnimated ? 1 : 0.8,
+              y: hasAnimated ? 0 : 150
             }}
             animate={{
               opacity: 1,
@@ -235,8 +266,8 @@ function Home() {
               y: 0
             }}
             transition={{
-              duration: 0.1,
-              delay: 3
+              duration: dur(0.1),
+              delay: d(3)
             }}
             className={`rs hidden lg:block w-[28%] h-[78vh] overflow-hidden relative border border-white/50 rounded-2xl`}
           >
@@ -322,14 +353,14 @@ function Home() {
         {/* Movie showcase section */}
         <motion.div
           initial={{
-            opacity: 0
+            opacity: hasAnimated ? 1 : 0
           }}
           animate={{
             opacity: 1
           }}
           transition={{
-            duration: 1,
-            delay: 3.5
+            duration: dur(1),
+            delay: d(3.5)
           }}
           className='w-full h-full m-auto'>
           <MixedMovies />
@@ -346,9 +377,9 @@ function Home() {
           </div>
           <div className="w-full md:w-1/3 flex flex-col gap-2 text-sm font-para items-center">
             <p className="font-semibold text-xl">Quick Links</p>
-            <a href="/" className="hover:text-blue-500">Home</a>
-            <a href="/recommend" className="hover:text-blue-500">Recommend</a>
-            <a href="/about" className="hover:text-blue-500">About</a>
+            <Link onClick={scrollToTop} to="/" className="hover:text-blue-500">Home</Link>
+            <Link to="/recommend" className="hover:text-blue-500">Recommend</Link>
+            <Link to="/about" className="hover:text-blue-500">About</Link>
           </div>
           <div className="w-full md:w-1/3 flex flex-col gap-2 text-sm font-para items-center">
             <p className="font-semibold text-xl">Connect</p>
