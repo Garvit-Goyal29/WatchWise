@@ -8,7 +8,7 @@ function Login() {
         className="absolute inset-0 bg-cover bg-center bg-fixed"
         style={{ backgroundImage: `url(${bg})` }}
       />
-      <div className='relative z-10 text-white pt-[25vh] w-[90%] min-h-screen flex flex-col justify-start items-start gap-[4vh] m-auto'>
+      <div className='relative z-10 text-white pt-[20vh] sm:pt-[20vh] w-[93%] sm:w-[90%] min-h-screen flex flex-col justify-start items-start gap-[4vh] m-auto'>
         <div className="w-full max-w-md mx-auto bg-black/40 backdrop-blur-md border border-white/50 rounded-3xl p-8 shadow-2xl">
 
           <div className="text-center mb-8">
@@ -25,7 +25,7 @@ function Login() {
             <input
               type="email"
               placeholder="Email Address"
-              className="w-full px-4 py-3 text-sm rounded-xl bg-white/5 border border-white/10 outline-none focus:border-[#fed500]"/>
+              className="w-full px-4 py-3 text-sm rounded-xl bg-white/5 border border-white/10 outline-none focus:border-[#fed500]" />
 
             <input
               type="password"

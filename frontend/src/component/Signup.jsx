@@ -9,9 +9,9 @@ function Singup() {
         className="absolute inset-0 bg-cover bg-center bg-fixed"
         style={{ backgroundImage: `url(${bg})` }}
       />
-      <div className='relative z-10 text-white pt-[20vh] w-[90%] min-h-screen flex flex-col justify-start items-center m-auto'>
-        <div className="w-[85%] h-[75vh] flex justify-center">
-          <div className="w-[68%] h-[75vh] max-w-md bg-black/40 backdrop-blur-md border-t border-l border-b border-white/50 py-5 px-5 shadow-2xl rounded-bl-xl rounded-tl-xl">
+      <div className='relative z-10 text-white pt-[20vh] sm:pt-[20vh] w-[93%] sm:w-[90%] min-h-screen flex flex-col justify-start items-center m-auto'>
+        <div className="w-[95%] sm:w-[85%] h-auto sm:h-[75vh] flex justify-center">
+          <div className="w-full sm:w-[68%] h-auto sm:h-[75vh] max-w-md bg-black/40 backdrop-blur-md border-t border-l border-b border-white/50 py-5 px-5 shadow-2xl rounded-xl sm:rounded-bl-xl sm:rounded-tl-xl sm:rounded-tr-none sm:rounded-br-none">
             <div className="text-center mb-6">
               <h1 className="text-3xl sm:text-4xl font-bold text-[#fed500]">
                 WatchWise
@@ -61,7 +61,8 @@ function Singup() {
               </a>
             </p>
           </div>
-          <div className='w-[32%] h-full border border-white rounded-br-xl rounded-tr-xl overflow-hidden'>
+          {/* Side image - hidden on mobile */}
+          <div className='hidden sm:block w-[32%] h-full border border-white rounded-br-xl rounded-tr-xl overflow-hidden'>
             <img src={signimg} alt="" className='w-full h-full' />
           </div>
         </div>

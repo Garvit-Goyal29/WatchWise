@@ -34,7 +34,7 @@ function MixedMovies() {
   return (
     <div className="w-full my-[7vh] border border-white/50 rounded-2xl bg-black/20 backdrop-blur-md">
       <h2 className="text-white text-3xl font-heading text-center mt-[4vh]">For You 🎬</h2>
-      <div className="grid grid-cols-5 gap-4 w-[80vw] m-auto  py-[5vh]">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 w-[95%] sm:w-[80vw] m-auto py-[3vh] sm:py-[5vh]">
         {movies.map(movie => (
           <div key={movie.imdbID} className="group relative rounded-xl overflow-hidden">
             {movie.Poster && movie.Poster !== "N/A" ? (

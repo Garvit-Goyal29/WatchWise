@@ -125,3 +125,4 @@ Rules:
     }
 };
 export default userQuery;
+// convert whole website responsive for all resolution and rememeber do not change  main pc layout, just addon tab,phone responsive tailwind calss in simple way do not over-complex things and also add loder.jsc which in recommand.jsx componenet after clicking on get suggetion the loader make like star theme which give feel like AI will sugget movie and and add text AI generate etc. do according to you

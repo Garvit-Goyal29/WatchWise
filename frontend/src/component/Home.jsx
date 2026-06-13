@@ -71,23 +71,23 @@ function Home() {
       <div className="relative z-10 text-white pt-[20vh] w-[93%] min-h-screen flex flex-col justify-center items-start m-auto">
         <Particles />
         {/* Hero Section */}
-        <div className='flex w-full h-full justify-start items-center overflow-hidden'>
+        <div className='flex flex-col lg:flex-row w-full h-full justify-start items-center overflow-hidden'>
           {/* Hero Section left-side */}
-          <div className='w-[70%] h-full flex flex-col justify-center gap-[5vh] items-center py-[3vh] pr-[25%]'>
+          <div className='w-full lg:w-[70%] h-full flex flex-col justify-center gap-[5vh] items-center py-[3vh] lg:pr-[25%]'>
             {/* Heading */}
             <div>
               <motion.h1
                 initial={{
                   opacity: "0",
-                  y:-10
+                  y: -10
                 }}
                 animate={{
                   opacity: "100%",
-                  y:0
+                  y: 0
                 }}
                 transition={{
                   duration: 1.5,
-                  delay:1
+                  delay: 1
                 }}
                 className="font-heading text-4xl lg:text-5xl text-center">
                 Watch What You Feel!
@@ -95,15 +95,15 @@ function Home() {
               <motion.p
                 initial={{
                   opacity: "0",
-                  y:-10
+                  y: -10
                 }}
                 animate={{
                   opacity: "100%",
-                  y:0
+                  y: 0
                 }}
                 transition={{
                   duration: 1.5,
-                  delay:1
+                  delay: 1
                 }}
                 className="font-para text-[2vh] text-gray-400 max-w-xl text-center">
                 Let AI recommend the perfect movie for you Or Browse trending.
@@ -188,13 +188,13 @@ function Home() {
                 delay: 1.8,
                 duration: 1
               }}
-              className='flex flex-col border border-white/30 rounded-2xl justify-evenly items-center w-[30%] h-[25vh] bg-black/30 backdrop-blur-sm px-36'>
+              className='flex flex-col border border-white/30 rounded-2xl justify-evenly items-center w-[80%] lg:w-[30%] h-[25vh] bg-black/30 backdrop-blur-sm px-6 lg:px-36'>
               <div className='text-center'>
                 <h1 className='font-heading text-xl'>Get Recommendation </h1>
                 <p className='font-para text-[1.7vh]'>✨ AI picks movies for your mood.</p>
               </div>
               <NavLink to='/recommend'
-                className="w-[15vw] text-center py-[1vh] rounded-full text-white text-sm border bg-linear-to-r from-purple-700/30 to-red-400/30 hover:from-purple-700 hover:to-red-400 font-button transition-all ease-in duration-300"
+                className="w-[15vw] max-sm:w-full text-center py-[1vh] rounded-full text-white text-sm border bg-linear-to-r from-purple-700/30 to-red-400/30 hover:from-purple-700 hover:to-red-400 font-button transition-all ease-in duration-300"
               >Try AI Suggestion
               </NavLink>
             </motion.div>
@@ -222,7 +222,7 @@ function Home() {
                 className="py-[2vh] text-sm w-[40%] bg-black/40 border border-white/20 rounded-full backdrop-blur-xs text-white text-center">🌍 Languages</motion.p>
             </div>
           </div>
-          {/* Hero Section right-side */}
+          {/* Hero Section right-side - hidden on mobile */}
           <motion.div // ref={refRside}
             initial={{
               opacity: 0,
@@ -238,7 +238,7 @@ function Home() {
               duration: 0.1,
               delay: 3
             }}
-            className={`rs w-[28%] h-[78vh] overflow-hidden relative border border-white/50 rounded-2xl`}
+            className={`rs hidden lg:block w-[28%] h-[78vh] overflow-hidden relative border border-white/50 rounded-2xl`}
           >
             <motion.div
               animate={{
@@ -337,20 +337,20 @@ function Home() {
         {/* footer */}
       </div>
       <footer className="w-full border-t border-white/30 bg-black/40 backdrop-blur-xl text-white px-10 py-2">
-        <div className="flex flex-col md:flex-row justify-between">
-          <div className='w-1/3 flex flex-col items-center'>
+        <div className="flex flex-col md:flex-row justify-between gap-6 md:gap-0 py-4 md:py-0">
+          <div className='w-full md:w-1/3 flex flex-col items-center'>
             <h2 className="text-xl font-heading">WatchWise</h2>
             <p className="text-gray-400 text-sm mt-2 font-para">
               Watch what you feel.
             </p>
           </div>
-          <div className="w-1/3 flex flex-col gap-2 text-sm font-para items-center">
+          <div className="w-full md:w-1/3 flex flex-col gap-2 text-sm font-para items-center">
             <p className="font-semibold text-xl">Quick Links</p>
             <a href="/" className="hover:text-blue-500">Home</a>
             <a href="/recommend" className="hover:text-blue-500">Recommend</a>
             <a href="/about" className="hover:text-blue-500">About</a>
           </div>
-          <div className="w-1/3 flex flex-col gap-2 text-sm font-para items-center">
+          <div className="w-full md:w-1/3 flex flex-col gap-2 text-sm font-para items-center">
             <p className="font-semibold text-xl">Connect</p>
             <div className="flex flex-col gap-2 text-xl">
               <a href=""><FaLinkedin className="hover:text-blue-400" /></a>
