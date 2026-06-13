@@ -17,23 +17,26 @@ const userQuery = async (req, res) => {
     }
 
     try {
-        const prompt = `You are an expert movie recommendation engine.
-        User Request: ${description}
-        Preferred Language: ${language}
-        Preferred Industry: ${industry}
-        Rules:
-        1. Recommend ONLY movies from the specified language and industry.
-        2. Understand the user's actual intent, not just the genre.
-        3. If the user says "make me cry", recommend heartbreaking emotional movies.
-        4. If the user says "funny", recommend comedy movies.
-        5. If the user says "romantic", recommend romance movies.
-        6. Never recommend movies from a different language or industry.
-        7. Return exactly 5 movie titles.
-        Return ONLY a JSON array.
+        const prompt = `You are a movie recommendation engine.
+User Query:
+${description}
+Language:
+${language}
+Industry:
+${industry}
+Rules:
+1. Extract all constraints from the user query.
+2. Treat years, genres, moods, actors, countries and keywords as mandatory filters.
+3. Never violate a year constraint.
+4. Never violate language constraint.
+5. Never violate industry constraint.
+6. Return only movies satisfying ALL constraints.
+7. If fewer than 5 movies exist, return fewer.
+8. Return ONLY a JSON array.
         Example:["Movie 1","Movie 2","Movie 3","Movie 4","Movie 5"]`;
 
         const response = await client.chat.completions.create({
-            model: "llama-3.1-8b-instant",
+            model: "llama-3.3-70b-versatile",
             messages: [
                 { role: "system", content: "You are a movie recommendation assistant. You MUST return ONLY a JSON array of strings. No conversational text." },
                 { role: "user", content: prompt }
