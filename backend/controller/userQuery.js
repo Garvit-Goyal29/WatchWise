@@ -36,7 +36,7 @@ Rules:
         Example:["Movie 1","Movie 2","Movie 3","Movie 4","Movie 5"]`;
 
         const response = await client.chat.completions.create({
-            model: "llama-3.3-70b-versatile",
+            model: "openai/gpt-oss-20b",
             messages: [
                 { role: "system", content: "You are a movie recommendation assistant. You MUST return ONLY a JSON array of strings. No conversational text." },
                 { role: "user", content: prompt }
