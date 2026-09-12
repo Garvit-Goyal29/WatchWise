@@ -12,10 +12,12 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "bytez": "^0.7.0",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "mongoose": "^9.7.1",
     "nodemon": "^3.1.14",
     "openai": "^6.34.0"
   }
