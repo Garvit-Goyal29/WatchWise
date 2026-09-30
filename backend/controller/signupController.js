@@ -3,8 +3,8 @@ import User from '../model/User.js';
 
 const signup = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
-        if (!name || !email || !password) {
+        const { name, email, pass } = req.body;
+        if (!name || !email || !pass) {
             return res.status(400).json({ error: 'All fields (name, email, password) are required' });
         }
         if (name.trim().length < 2) {
@@ -14,7 +14,7 @@ const signup = async (req, res) => {
         if (!emailRegex.test(email)) {
             return res.status(400).json({ error: 'Please enter a valid email address' });
         }
-        if (password.length < 6) {
+        if (pass.length < 6) {
             return res.status(400).json({ error: 'Password must be at least 6 characters' });
         }
         const existingUser = await User.findOne({ email: email.toLowerCase() });
@@ -22,7 +22,7 @@ const signup = async (req, res) => {
             return res.status(409).json({ error: 'User with this email already exists' });
         }
         const saltRounds = 10;
-        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        const hashedPassword = await bcrypt.hash(pass, saltRounds);
         const newUser = await User.create({
             name: name.trim(),
             email: email.toLowerCase().trim(),
@@ -34,7 +34,8 @@ const signup = async (req, res) => {
                 id: newUser._id,
                 name: newUser.name,
                 email: newUser.email
-            }
+            },
+            success:true
         });
     } catch (error) {
         if (error.code === 11000) {

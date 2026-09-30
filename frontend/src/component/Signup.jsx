@@ -1,8 +1,41 @@
 import React from 'react'
 import bg from '../assets/bg.webp'
+import { useState } from 'react'
 import signimg from '../assets/signupImage2.png'
 import { motion } from 'framer-motion'
 function Singup() {
+  const [name, setname] = useState("");
+  const [email, setemail] = useState("");
+  const [pass, setpass] = useState("");
+  const [cpass, setcpass] = useState("");
+  async function handleSignUp(e) {
+    e.preventDefault();
+    if(!name || !email || !pass || !cpass){
+      alert("Enter complete details please")
+      return
+    }
+    if(pass !== cpass){
+      alert("password not matched!")
+      return
+    }
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/signup`,{
+      headers:{
+        'Content-Type':'application/json'
+      },
+      method:'POST',
+      body:JSON.stringify({
+        name,
+        email,
+        pass,
+      })
+    })
+    const data = await res.json();
+    if(data.success){
+      window.location.href = '/'
+    } else {
+      alert(data.error)
+    }
+  }
   return (
     <div className='relative min-h-screen'>
       <div
@@ -21,28 +54,32 @@ function Singup() {
               </p>
             </div>
 
-            <form className="space-y-4">
+            <form onSubmit={handleSignUp} className="space-y-4">
               <input
                 type="text"
                 placeholder="Full Name"
+                onChange={(e)=>{setname(e.target.value)}}
                 className="w-full px-4 py-3 text-sm rounded-xl bg-white/5 border border-white/10 outline-none focus:border-[#fed500]"
               />
 
               <input
                 type="email"
                 placeholder="Email Address"
+                onChange={(e)=>{setemail(e.target.value)}}
                 className="w-full px-4 py-3 text-sm rounded-xl bg-white/5 border border-white/10 outline-none focus:border-[#fed500]"
               />
 
               <input
                 type="password"
                 placeholder="Password"
+                onChange={(e)=>{setpass(e.target.value)}}
                 className="w-full px-4 py-3 text-sm rounded-xl bg-white/5 border border-white/10 outline-none focus:border-[#fed500]"
               />
 
               <input
                 type="password"
                 placeholder="Confirm Password"
+                onChange={(e)=>{setcpass(e.target.value)}}
                 className="w-full px-4 py-3 text-sm rounded-xl bg-white/5 border border-white/10 outline-none focus:border-[#fed500]"
               />
 
@@ -56,7 +93,7 @@ function Singup() {
 
             <p className="text-center text-sm text-gray-400 mt-6">
               Already have an account?{" "}
-              <a href='' className="text-[#fed500] cursor-pointer hover:text-yellow-200">
+              <a href='/login' className="text-[#fed500] cursor-pointer hover:text-yellow-200">
                 Login
               </a>
             </p>
